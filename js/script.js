@@ -16,6 +16,31 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeScrollEffects();
     initializeContactForm();
     initializeAnimations();
+    
+    // Initialize plan tabs on page load
+    // Ensure residential plans are shown by default
+    const residencialPlans = document.getElementById('residencial-plans');
+    const pymesPlans = document.getElementById('pymes-plans');
+    const corporativoPlans = document.getElementById('corporativo-plans');
+    
+    if (residencialPlans && pymesPlans && corporativoPlans) {
+        // Hide all plan contents first
+        residencialPlans.classList.remove('active');
+        pymesPlans.classList.remove('active');
+        corporativoPlans.classList.remove('active');
+        
+        // Show residential plans by default
+        residencialPlans.classList.add('active');
+    }
+    
+    // Ensure first tab button is active
+    const allTabButtons = document.querySelectorAll('.tab-button');
+    allTabButtons.forEach(button => button.classList.remove('active'));
+    
+    const firstTabButton = document.querySelector('.tab-button');
+    if (firstTabButton) {
+        firstTabButton.classList.add('active');
+    }
 });
 
 // ===== NAVEGACIÓN MÓVIL =====
@@ -130,6 +155,66 @@ function initializeContactForm() {
         formInputs.forEach(input => {
             input.addEventListener('blur', validateField);
             input.addEventListener('input', clearFieldError);
+        });
+    }
+    
+    // Corporate form handling
+    const corporateForm = document.getElementById('corporate-form');
+    if (corporateForm) {
+        corporateForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const companyName = formData.get('company_name');
+            const companyLastname = formData.get('company_lastname');
+            const companyRuc = formData.get('company_ruc');
+            const companyPhone = formData.get('company_phone');
+            const companyEmail = formData.get('company_email');
+            const companyService = formData.get('company_service');
+            
+            // Simple validation
+            if (!companyName || !companyLastname || !companyRuc || !companyPhone || !companyEmail || !companyService) {
+                alert('Por favor, complete todos los campos.');
+                return;
+            }
+            
+            // Validate RUC format
+            const rucPattern = /^20[0-9]{9}$/;
+            if (!rucPattern.test(companyRuc)) {
+                alert('Por favor, ingrese un RUC válido que comience con 20 y tenga 11 dígitos.');
+                return;
+            }
+            
+            // Create email body
+            const emailBody = `
+Solicitud de Cotización Corporativa - KADO Telecomunicaciones
+
+Datos de la Empresa:
+- Nombres: ${companyName}
+- Apellidos: ${companyLastname}
+- RUC: ${companyRuc}
+- Teléfono: ${companyPhone}
+- Email: ${companyEmail}
+- Servicio solicitado: ${companyService}
+
+Mensaje: Solicitud de cotización para Internet Dedicado Simétrico.
+
+---
+Enviado desde el formulario web de KADO Telecomunicaciones
+            `.trim();
+            
+            // Create mailto link
+            const subject = encodeURIComponent('Solicitud de Cotización Corporativa - ' + companyName);
+            const body = encodeURIComponent(emailBody);
+            const mailtoLink = `mailto:comercial@kado.pe?subject=${subject}&body=${body}`;
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Show success message
+            alert('¡Gracias por tu interés! Se abrirá tu cliente de correo para enviar la solicitud a comercial@kado.pe');
+            this.reset();
         });
     }
 }

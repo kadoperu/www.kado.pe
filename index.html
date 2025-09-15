@@ -102,6 +102,8 @@
                     <p>Conectividad dedicada y soluciones personalizadas para empresas</p>
                 </div>
             </div>
+
+
         </div>
     </section>
 
@@ -241,6 +243,10 @@
                 <button class="tab-button" onclick="showPlanType('pymes')">
                     <i class="fas fa-building"></i>
                     Planes Pymes
+                </button>
+                <button class="tab-button" onclick="showPlanType('corporativo')">
+                    <i class="fas fa-city"></i>
+                    Corporativo
                 </button>
             </div>
 
@@ -390,6 +396,65 @@
                             <li><i class="fas fa-check"></i> Monitoreo proactivo</li>
                         </ul>
                         <a href="#contactenos" class="btn btn-outline">Contratar</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Corporate Plans -->
+            <div id="corporativo-plans" class="plan-content">
+                <div class="corporate-section">
+                    <div class="corporate-hero">
+                        <div class="corporate-content">
+                            <h3>Internet Dedicado 100% Fibra con Beneficios que Impulsan tu Operación</h3>
+                            <p class="corporate-subtitle">Actívalo hoy y accede a promociones exclusivas</p>
+                            
+                            <div class="corporate-description">
+                                <p>Porque cada empresa enfrenta desafíos únicos, en <strong>KADO Telecomunicaciones</strong> brindamos una propuesta flexible y robusta con <strong>Internet Dedicado Simétrico</strong> y promociones que mejoran eficiencia, seguridad y continuidad operativa.</p>
+                                
+                                <p><strong>RUC 20</strong> y un asesor de negocios se comunicará contigo para ayudarte.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="corporate-form">
+                            <div class="form-header">
+                                <h4>Ingresa los datos de tu empresa</h4>
+                                <p>RUC 20 y un asesor de negocios se comunicará contigo para ayudarte</p>
+                            </div>
+                            
+                            <form id="corporate-form" class="corporate-quote-form">
+                                <div class="form-group">
+                                    <input type="text" id="company-name" name="company_name" placeholder="Nombres" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <input type="text" id="company-lastname" name="company_lastname" placeholder="Apellidos" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <input type="text" id="company-ruc" name="company_ruc" placeholder="RUC 20" required pattern="20[0-9]{9}" title="Ingrese un RUC válido que comience con 20">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <input type="tel" id="company-phone" name="company_phone" placeholder="Teléfono / Celular" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <input type="email" id="company-email" name="company_email" placeholder="Email" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <select id="company-service" name="company_service" required>
+                                        <option value="">Servicios a contratar</option>
+                                        <option value="internet-dedicado">Internet Dedicado</option>
+                                        <option value="internet-backup">Internet + Backup</option>
+                                        <option value="solucion-completa">Solución Completa</option>
+                                        <option value="consultoria">Consultoría</option>
+                                    </select>
+                                </div>
+                                
+                                <button type="submit" class="btn-corporate-submit">ENVIAR</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
