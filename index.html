@@ -421,39 +421,52 @@
                                 <p>RUC 20 y un asesor de negocios se comunicará contigo para ayudarte</p>
                             </div>
                             
-                            <form id="corporate-form" class="corporate-quote-form">
-                                <div class="form-group">
-                                    <input type="text" id="company-name" name="company_name" placeholder="Nombres" required>
-                                </div>
+                            <form id="corporateForm" action="https://formspree.io/f/xvgbnvon" method="POST" class="corporate-quote-form">
+                                <label>
+                                    Nombres:
+                                    <input type="text" name="nombres" placeholder="Nombres" required>
+                                </label>
                                 
-                                <div class="form-group">
-                                    <input type="text" id="company-lastname" name="company_lastname" placeholder="Apellidos" required>
-                                </div>
+                                <label>
+                                    Apellidos:
+                                    <input type="text" name="apellidos" placeholder="Apellidos" required>
+                                </label>
                                 
-                                <div class="form-group">
-                                    <input type="text" id="company-ruc" name="company_ruc" placeholder="RUC 20" required pattern="20[0-9]{9}" title="Ingrese un RUC válido que comience con 20">
-                                </div>
+                                <label>
+                                    RUC 20:
+                                    <input type="text" name="ruc" placeholder="RUC 20" pattern="20[0-9]{9}" title="Ingrese un RUC válido que comience con 20" required>
+                                </label>
                                 
-                                <div class="form-group">
-                                    <input type="tel" id="company-phone" name="company_phone" placeholder="Teléfono / Celular" required>
-                                </div>
+                                <label>
+                                    Teléfono:
+                                    <input type="tel" name="telefono" placeholder="Teléfono / Celular" required>
+                                </label>
                                 
-                                <div class="form-group">
-                                    <input type="email" id="company-email" name="company_email" placeholder="Email" required>
-                                </div>
+                                <label>
+                                    Email:
+                                    <input type="email" name="email" placeholder="Email" required>
+                                </label>
                                 
-                                <div class="form-group">
-                                    <select id="company-service" name="company_service" required>
-                                        <option value="">Servicios a contratar</option>
+                                <label>
+                                    Servicios a contratar:
+                                    <select name="servicios" required>
+                                        <option value="">Seleccione un servicio</option>
                                         <option value="internet-dedicado">Internet Dedicado</option>
                                         <option value="internet-backup">Internet + Backup</option>
                                         <option value="solucion-completa">Solución Completa</option>
                                         <option value="consultoria">Consultoría</option>
                                     </select>
-                                </div>
+                                </label>
+                                
+                                <!-- Hidden fields for Formspree configuration -->
+                                <input type="hidden" name="_replyto" value="comercial@kado.pe">
+                                <input type="hidden" name="_subject" value="Nueva Consulta Corporativa - KADO Telecomunicaciones">
                                 
                                 <button type="submit" class="btn-corporate-submit">ENVIAR</button>
                             </form>
+                            
+                            <!-- Mensaje de respuesta para formulario corporativo -->
+                            <p id="respuestaCorporativa"></p>
                         </div>
                     </div>
                 </div>
@@ -548,7 +561,7 @@
                 
                 <div class="contact-form">
                     <h3>Envíanos un mensaje</h3>
-                    <form id="contactForm">
+                    <form id="contactForm" action="https://formspree.io/f/xvgbnvon" method="POST">
                         <div class="form-group">
                             <input type="text" id="name" name="name" placeholder="Nombre completo" required>
                         </div>
@@ -570,8 +583,16 @@
                         <div class="form-group">
                             <textarea id="message" name="message" placeholder="Mensaje" rows="5" required></textarea>
                         </div>
+                        
+                        <!-- Hidden fields for Formspree configuration -->
+                        <input type="hidden" name="_replyto" value="hola@kado.pe">
+                        <input type="hidden" name="_subject" value="Nuevo mensaje de contacto - KADO Telecomunicaciones">
+                        
                         <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
                     </form>
+                    
+                    <!-- Mensaje de respuesta -->
+                    <p id="respuesta"></p>
                 </div>
             </div>
         </div>

@@ -158,76 +158,111 @@ function initializeContactForm() {
         });
     }
     
-    // Corporate form handling
-    const corporateForm = document.getElementById('corporate-form');
+    // Corporate form handling with AJAX
+    const corporateForm = document.getElementById('corporateForm');
     if (corporateForm) {
-        corporateForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+        corporateForm.addEventListener('submit', async function(e) {
+            e.preventDefault(); // evita que la página se recargue
             
-            // Get form data
-            const formData = new FormData(this);
-            const companyName = formData.get('company_name');
-            const companyLastname = formData.get('company_lastname');
-            const companyRuc = formData.get('company_ruc');
-            const companyPhone = formData.get('company_phone');
-            const companyEmail = formData.get('company_email');
-            const companyService = formData.get('company_service');
+            const form = e.target;
+            const data = new FormData(form);
+            const respuestaElement = document.getElementById('respuestaCorporativa');
             
-            // Simple validation
-            if (!companyName || !companyLastname || !companyRuc || !companyPhone || !companyEmail || !companyService) {
-                alert('Por favor, complete todos los campos.');
+            // Limpiar mensaje anterior
+            respuestaElement.textContent = '';
+            
+            // Validación básica
+            const nombres = data.get('nombres');
+            const apellidos = data.get('apellidos');
+            const ruc = data.get('ruc');
+            const telefono = data.get('telefono');
+            const email = data.get('email');
+            const servicios = data.get('servicios');
+            
+            if (!nombres || !apellidos || !ruc || !telefono || !email || !servicios) {
+                respuestaElement.textContent = '⚠️ Por favor, complete todos los campos.';
+                respuestaElement.style.color = '#dc3545';
                 return;
             }
             
-            // Validate RUC format
+            // Validar formato RUC
             const rucPattern = /^20[0-9]{9}$/;
-            if (!rucPattern.test(companyRuc)) {
-                alert('Por favor, ingrese un RUC válido que comience con 20 y tenga 11 dígitos.');
+            if (!rucPattern.test(ruc)) {
+                respuestaElement.textContent = '⚠️ Por favor, ingrese un RUC válido que comience con 20 y tenga 11 dígitos.';
+                respuestaElement.style.color = '#dc3545';
                 return;
             }
             
-            // Create email body
-            const emailBody = `
-Solicitud de Cotización Corporativa - KADO Telecomunicaciones
-
-Datos de la Empresa:
-- Nombres: ${companyName}
-- Apellidos: ${companyLastname}
-- RUC: ${companyRuc}
-- Teléfono: ${companyPhone}
-- Email: ${companyEmail}
-- Servicio solicitado: ${companyService}
-
-Mensaje: Solicitud de cotización para Internet Dedicado Simétrico.
-
----
-Enviado desde el formulario web de KADO Telecomunicaciones
-            `.trim();
+            // Mostrar mensaje de envío
+            respuestaElement.textContent = 'Enviando consulta corporativa...';
+            respuestaElement.style.color = '#666';
             
-            // Create mailto link
-            const subject = encodeURIComponent('Solicitud de Cotización Corporativa - ' + companyName);
-            const body = encodeURIComponent(emailBody);
-            const mailtoLink = `mailto:comercial@kado.pe?subject=${subject}&body=${body}`;
-            
-            // Open email client
-            window.location.href = mailtoLink;
-            
-            // Show success message
-            alert('¡Gracias por tu interés! Se abrirá tu cliente de correo para enviar la solicitud a comercial@kado.pe');
-            this.reset();
+            try {
+                const respuesta = await fetch('https://formspree.io/f/xvgbnvon', {
+                    method: 'POST',
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (respuesta.ok) {
+                    respuestaElement.textContent = '✅ ¡Consulta corporativa enviada con éxito! Un asesor se comunicará contigo pronto.';
+                    respuestaElement.style.color = '#28a745';
+                    form.reset(); // limpia los campos
+                } else {
+                    respuestaElement.textContent = '⚠️ Hubo un problema, intenta de nuevo.';
+                    respuestaElement.style.color = '#dc3545';
+                }
+            } catch (error) {
+                respuestaElement.textContent = '❌ Error de conexión.';
+                respuestaElement.style.color = '#dc3545';
+            }
         });
     }
 }
 
 function handleContactFormSubmit(e) {
-    e.preventDefault();
+    e.preventDefault(); // evita que la página se recargue
     
-    // Validar formulario
-    if (validateContactForm()) {
-        // Simular envío del formulario
-        showFormSuccess();
-        contactForm.reset();
+    const form = e.target;
+    const data = new FormData(form);
+    const respuestaElement = document.getElementById('respuesta');
+    
+    // Limpiar mensaje anterior
+    respuestaElement.textContent = '';
+    
+    // Validar formulario antes de enviar
+    if (!validateContactForm()) {
+        return;
     }
+    
+    // Mostrar mensaje de envío
+    respuestaElement.textContent = 'Enviando mensaje...';
+    respuestaElement.style.color = '#666';
+    
+    // Enviar con fetch
+    fetch('https://formspree.io/f/xvgbnvon', {
+        method: 'POST',
+        body: data,
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            respuestaElement.textContent = '✅ ¡Mensaje enviado con éxito!';
+            respuestaElement.style.color = '#28a745';
+            form.reset(); // limpia los campos
+        } else {
+            respuestaElement.textContent = '⚠️ Hubo un problema, intenta de nuevo.';
+            respuestaElement.style.color = '#dc3545';
+        }
+    })
+    .catch(error => {
+        respuestaElement.textContent = '❌ Error de conexión.';
+        respuestaElement.style.color = '#dc3545';
+    });
 }
 
 function validateContactForm() {
@@ -376,6 +411,7 @@ function handleWhatsAppClick() {
     console.log('WhatsApp button clicked');
 }
 
+// ===== FORMULARIO CORPORATIVO =====
 /**
  * Función para manejar clicks en botones de planes
  */
