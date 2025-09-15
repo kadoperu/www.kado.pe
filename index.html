@@ -231,95 +231,167 @@
     <section id="planes" class="plans">
         <div class="container">
             <h2 class="section-title">Nuestros Planes de Internet Fibra Óptica</h2>
+            
+            <!-- Plan Type Tabs -->
+            <div class="plan-tabs">
+                <button class="tab-button active" onclick="showPlanType('residencial')">
+                    <i class="fas fa-home"></i>
+                    Planes Residenciales
+                </button>
+                <button class="tab-button" onclick="showPlanType('pymes')">
+                    <i class="fas fa-building"></i>
+                    Planes Pymes
+                </button>
+            </div>
 
-
-
-            <div class="plans-grid">
+            <!-- Residential Plans -->
+            <div id="residencial-plans" class="plan-content active">
+                <div class="plans-grid">
                     <div class="plan-card">
-                    <div class="plan-header">
-                        <h3>Personal</h3>
-                        <div class="price">
-                            <span class="currency">S/</span>
-                            <span class="amount">60</span>
-                            <span class="period">/mes</span>
+                        <div class="plan-header">
+                            <h3>Personal</h3>
+                            <div class="price">
+                                <span class="currency">S/</span>
+                                <span class="amount">60</span>
+                                <span class="period">/mes</span>
+                            </div>
                         </div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> 60 Mbps de velocidad</li>
+                            <li><i class="fas fa-check"></i> Instalación gratuita</li>
+                            <li><i class="fas fa-check"></i> Soporte 24/7</li>
+                            <li><i class="fas fa-check"></i> Router con WiFi doble banda 5G</li>
+                            <li><i class="fas fa-check"></i> Sin permanencia mínima</li>
+                        </ul>
+                        <a href="#contactenos" class="btn btn-outline">Contratar</a>
                     </div>
-                    <ul class="plan-features">
-                        <li><i class="fas fa-check"></i> 60 Mbps de velocidad</li>
-                        <li><i class="fas fa-check"></i> Instalación gratuita</li>
-                        <li><i class="fas fa-check"></i> Soporte 24/7</li>
-                        <li><i class="fas fa-check"></i> Router con WiFi doble banda 5G</li>
-                        <li><i class="fas fa-check"></i> Sin permanencia mínima</li>
-                    </ul>
-                    <a href="#contactenos" class="btn btn-outline">Contratar</a>
+                    
+                    <div class="plan-card featured">
+                        <div class="plan-badge">Más Popular</div>
+                        <div class="plan-header">
+                            <h3>Básico</h3>
+                            <div class="price">
+                                <span class="currency">S/</span>
+                                <span class="amount">80</span>
+                                <span class="period">/mes</span>
+                            </div>
+                        </div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> 80 Mbps de velocidad</li>
+                            <li><i class="fas fa-check"></i> Instalación gratuita</li>
+                            <li><i class="fas fa-check"></i> Soporte prioritario 24/7</li>
+                            <li><i class="fas fa-check"></i> Router con WiFi 5G incluido</li>
+                        </ul>
+                        <a href="#contactenos" class="btn btn-primary">Contratar</a>
+                    </div>
+                    
+                    <div class="plan-card">
+                        <div class="plan-header">
+                            <h3>Familiar</h3>
+                            <div class="price">
+                                <span class="currency">S/</span>
+                                <span class="amount">100</span>
+                                <span class="period">/mes</span>
+                            </div>
+                        </div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> 100 Mbps de velocidad</li>
+                            <li><i class="fas fa-check"></i> Instalación gratuita</li>
+                            <li><i class="fas fa-check"></i> Soporte técnico dedicado</li>
+                            <li><i class="fas fa-check"></i> Backup de conectividad</li>
+                            <li><i class="fas fa-check"></i> Monitoreo 24/7</li>
+                        </ul>
+                        <a href="#contactenos" class="btn btn-outline">Contratar</a>
+                    </div>
+
+                    <div class="plan-card">
+                        <div class="plan-header">
+                            <h3>Premium</h3>
+                            <div class="price">
+                                <span class="currency">S/</span>
+                                <span class="amount">150</span>
+                                <span class="period">/mes</span>
+                            </div>
+                        </div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> 200 Mbps de velocidad</li>
+                            <li><i class="fas fa-check"></i> Instalación gratuita</li>
+                            <li><i class="fas fa-check"></i> Soporte técnico dedicado</li>
+                            <li><i class="fas fa-check"></i> Backup de conectividad</li>
+                            <li><i class="fas fa-check"></i> Monitoreo 24/7</li>
+                        </ul>
+                        <a href="#contactenos" class="btn btn-outline">Contratar</a>
+                    </div>
                 </div>
-                
+            </div>
 
-
-                <div class="plan-card featured">
-                    <div class="plan-badge">Más Popular</div>
-                    <div class="plan-header">
-                        <h3>Basico</h3>
-                        <div class="price">
-                            <span class="currency">S/</span>
-                            <span class="amount">80</span>
-                            <span class="period">/mes</span>
+            <!-- Business Plans (Pymes) -->
+            <div id="pymes-plans" class="plan-content">
+                <div class="plans-grid">
+                    <div class="plan-card">
+                        <div class="plan-header">
+                            <h3>Emprendedor</h3>
+                            <div class="price">
+                                <span class="currency">S/</span>
+                                <span class="amount">80</span>
+                                <span class="period">/mes</span>
+                            </div>
                         </div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> 80 Mbps de velocidad</li>
+                            <li><i class="fas fa-check"></i> Soporte técnico prioritario</li>
+                            <li><i class="fas fa-check"></i> Router empresarial</li>
+                            <li><i class="fas fa-check"></i> Instalación y configuración</li>
+                            <li><i class="fas fa-check"></i> SLA 99.5%</li>
+                            <li><i class="fas fa-check"></i> CIR 40%, MIR 80Mbps</li>
+                            <li><i class="fas fa-check"></i> Monitoreo proactivo</li>                            
+                        </ul>
+                        <a href="#contactenos" class="btn btn-outline">Contratar</a>
                     </div>
-                    <ul class="plan-features">
-                        <li><i class="fas fa-check"></i> 80 Mbps de velocidad</li>
-                        <li><i class="fas fa-check"></i> Instalación gratuita</li>
-                        <li><i class="fas fa-check"></i> Soporte prioritario 24/7</li>
-                        <li><i class="fas fa-check"></i> Router con WiFi 5G incluido</li>
-                    </ul>
-                    <a href="#contactenos" class="btn btn-primary">Contratar</a>
+                    
+                    <div class="plan-card featured">
+                        <div class="plan-badge">Recomendado</div>
+                        <div class="plan-header">
+                            <h3>Corporativo</h3>
+                            <div class="price">
+                                <span class="currency">S/</span>
+                                <span class="amount">120</span>
+                                <span class="period">/mes</span>
+                            </div>
+                        </div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> 100 Mbps de velocidad</li>
+                            <li><i class="fas fa-check"></i> Soporte técnico dedicado 24/7</li>
+                            <li><i class="fas fa-check"></i> Equipos empresariales premium</li>
+                            <li><i class="fas fa-check"></i> Backup de conectividad</li>
+                            <li><i class="fas fa-check"></i> SLA 99.8%</li>
+                            <li><i class="fas fa-check"></i> CIR 40%, MIR 100 Mbps</li>                            
+                            <li><i class="fas fa-check"></i> Monitoreo proactivo</li>
+                        </ul>
+                        <a href="#contactenos" class="btn btn-primary">Contratar</a>
+                    </div>
+                    
+                    <div class="plan-card">
+                        <div class="plan-header">
+                            <h3>Enterprise</h3>
+                            <div class="price">
+                                <span class="currency">S/</span>
+                                <span class="amount">150</span>
+                                <span class="period">/mes</span>
+                            </div>
+                        </div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> 130 Mbps simétricos</li>
+                            <li><i class="fas fa-check"></i> Gerente de cuenta dedicado</li>
+                            <li><i class="fas fa-check"></i> Infraestructura redundante</li>
+                            <li><i class="fas fa-check"></i> Backup automático</li>
+                            <li><i class="fas fa-check"></i> SLA 99.9%</li>
+                            <li><i class="fas fa-check"></i> CIR 40%, MIR 130 Mbps</li>                            
+                            <li><i class="fas fa-check"></i> Monitoreo proactivo</li>
+                        </ul>
+                        <a href="#contactenos" class="btn btn-outline">Contratar</a>
+                    </div>
                 </div>
-                
-
-
-
-                <div class="plan-card">
-                    <div class="plan-header">
-                        <h3>Familiar</h3>
-                        <div class="price">
-                            <span class="currency">S/</span>
-                            <span class="amount">100</span>
-                            <span class="period">/mes</span>
-                        </div>
-                    </div>
-                    <ul class="plan-features">
-                        <li><i class="fas fa-check"></i> 100 Mbps de velocidad</li>
-                        <li><i class="fas fa-check"></i> Instalación gratuita</li>
-                        <li><i class="fas fa-check"></i> Soporte técnico dedicado</li>
-                        <li><i class="fas fa-check"></i> Backup de conectividad</li>
-                        <li><i class="fas fa-check"></i> Monitoreo 24/7</li>
-                    </ul>
-                    <a href="#contactenos" class="btn btn-outline">Contratar</a>
-                </div>
-
-
-                <div class="plan-card">
-                    <div class="plan-header">
-                        <h3>Premium</h3>
-                        <div class="price">
-                            <span class="currency">S/</span>
-                            <span class="amount">150</span>
-                            <span class="period">/mes</span>
-                        </div>
-                    </div>
-                    <ul class="plan-features">
-                        <li><i class="fas fa-check"></i> 200 Mbps de velocidad</li>
-                        <li><i class="fas fa-check"></i> Instalación gratuita</li>
-                        <li><i class="fas fa-check"></i> Soporte técnico dedicado</li>
-                        <li><i class="fas fa-check"></i> Backup de conectividad</li>
-                        <li><i class="fas fa-check"></i> Monitoreo 24/7</li>
-                    </ul>
-                    <a href="#contactenos" class="btn btn-outline">Contratar</a>
-                </div>                
-
-
-
-
             </div>
         </div>
     </section>

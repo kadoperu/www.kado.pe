@@ -317,6 +317,35 @@ function handlePlanClick(planName) {
 }
 
 /**
+ * Plan type switching functionality
+ */
+function showPlanType(planType) {
+    // Hide all plan contents
+    const allPlanContents = document.querySelectorAll('.plan-content');
+    allPlanContents.forEach(content => {
+        content.classList.remove('active');
+    });
+    
+    // Remove active class from all tab buttons
+    const allTabButtons = document.querySelectorAll('.tab-button');
+    allTabButtons.forEach(button => {
+        button.classList.remove('active');
+    });
+    
+    // Show selected plan content
+    const selectedPlanContent = document.getElementById(planType + '-plans');
+    if (selectedPlanContent) {
+        selectedPlanContent.classList.add('active');
+    }
+    
+    // Add active class to clicked tab button
+    const clickedButton = event.target.closest('.tab-button');
+    if (clickedButton) {
+        clickedButton.classList.add('active');
+    }
+}
+
+/**
  * Función para lazy loading de imágenes
  */
 function initializeLazyLoading() {
