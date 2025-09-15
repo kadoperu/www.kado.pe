@@ -355,19 +355,110 @@ body {
     box-shadow: var(--shadow-lg);
 }
 
-/* ===== PRODUCTS SECTION ===== */
-.products {
+/* ===== PRODUCTS AND SERVICES SECTION ===== */
+.products-services {
+    padding: var(--spacing-3xl) 0;
+    background-color: var(--gray-50);
+}
+
+.products-services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+.product-service-card {
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-xl);
+}
+
+.product-service-image {
+    height: 200px;
+    overflow: hidden;
+}
+
+.product-service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-service-card:hover .product-service-image img {
+    transform: scale(1.1);
+}
+
+.product-service-content {
+    padding: var(--spacing-xl);
+}
+
+.product-service-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.product-service-icon i {
+    font-size: var(--font-size-2xl);
+    color: var(--white);
+}
+
+.product-service-content h3 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-md);
+    color: var(--text-dark);
+}
+
+.product-service-content p {
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-lg);
+}
+
+.service-features {
+    list-style: none;
+    margin: var(--spacing-lg) 0 var(--spacing-xl) 0;
+}
+
+.service-features li {
+    padding: var(--spacing-xs) 0;
+    display: flex;
+    align-items: center;
+    color: var(--secondary-color);
+}
+
+.service-features i {
+    color: var(--success);
+    margin-right: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+}
+
+/* ===== PLANS SECTION ===== */
+.plans {
     padding: var(--spacing-3xl) 0;
     background-color: var(--white);
 }
 
-.products-grid {
+.plans-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: var(--spacing-xl);
 }
 
-.product-card {
+.plan-card {
     background-color: var(--white);
     border: 2px solid var(--gray-200);
     border-radius: var(--radius-lg);
@@ -375,32 +466,34 @@ body {
     text-align: center;
     position: relative;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
 }
 
-.product-card:hover {
-    transform: translateY(-5px);
+.plan-card:hover {
+    transform: translateY(-10px);
     box-shadow: var(--shadow-xl);
 }
 
-.product-card.featured {
-    border-color: var(--primary-color);
+.plan-card.featured {
+    border: 3px solid var(--primary-color);
     transform: scale(1.05);
+    background: linear-gradient(135deg, var(--gray-50), var(--white));
 }
 
-.product-badge {
+.plan-badge {
     position: absolute;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 20px;
+    right: -30px;
     background-color: var(--primary-color);
     color: var(--white);
-    padding: var(--spacing-xs) var(--spacing-lg);
-    border-radius: var(--radius-md);
-    font-size: var(--font-size-sm);
+    padding: 5px 40px;
+    font-size: var(--font-size-xs);
     font-weight: 600;
+    transform: rotate(45deg);
+    text-transform: uppercase;
 }
 
-.product-header h3 {
+.plan-header h3 {
     font-size: var(--font-size-xl);
     font-weight: 600;
     margin-bottom: var(--spacing-lg);
@@ -414,6 +507,7 @@ body {
 .price .currency {
     font-size: var(--font-size-lg);
     color: var(--text-light);
+    vertical-align: top;
 }
 
 .price .amount {
@@ -427,20 +521,26 @@ body {
     color: var(--text-light);
 }
 
-.product-features {
+.plan-features {
     list-style: none;
-    margin-bottom: var(--spacing-xl);
+    margin: var(--spacing-xl) 0;
+    text-align: left;
 }
 
-.product-features li {
+.plan-features li {
     padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--gray-200);
     display: flex;
     align-items: center;
-    gap: var(--spacing-sm);
 }
 
-.product-features i {
+.plan-features li:last-child {
+    border-bottom: none;
+}
+
+.plan-features i {
     color: var(--success);
+    margin-right: var(--spacing-sm);
     font-size: var(--font-size-sm);
 }
 
