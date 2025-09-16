@@ -375,68 +375,66 @@
                 <div class="corporate-section">
                     <div class="corporate-hero">
                         <div class="corporate-content">
-                            <h3>Internet Dedicado 100% Fibra con Beneficios que Impulsan tu Operación</h3>
-                            <p class="corporate-subtitle">Actívalo hoy y accede a promociones exclusivas</p>
+                            <h1 class="corporate-title">Internet Dedicado 100% Fibra Optica</h1>
+                            <p class="corporate-subtitle">Solicita mas informacion sobre las velocidades disponibles</p>
                             
                             <div class="corporate-description">
                                 <p>Porque cada empresa enfrenta desafíos únicos, en <strong>KADO Telecomunicaciones</strong> brindamos una propuesta flexible y robusta con <strong>Internet Dedicado Simétrico</strong> y promociones que mejoran eficiencia, seguridad y continuidad operativa.</p>
-                                
-                                <p><strong>RUC 20</strong> y un asesor de negocios se comunicará contigo para ayudarte.</p>
                             </div>
                         </div>
                         
-                        <div class="corporate-form">
+                        <div class="corporate-form-container">
                             <div class="form-header">
-                                <h4>Ingresa los datos de tu empresa</h4>
-                                <p>RUC 20 y un asesor de negocios se comunicará contigo para ayudarte</p>
+                                <h4 style="color: white;">Ingresa los datos de tu empresa</h4>
+                                <p style="color: white;">RUC 20 y un asesor de negocios se comunicará contigo para ayudarte</p>
                             </div>
                             
-                            <form id="corporateForm" action="https://formspree.io/f/xvgbnvon" method="POST" class="corporate-quote-form">
-                                <label>
-                                    Nombres:
-                                    <input type="text" name="nombres" placeholder="Nombres" required>
-                                </label>
+                            <form id="contacto" class="corporate-form">
+                                <div class="form-field">
+                                    <label for="nombres">Nombre:</label>
+                                    <input type="text" id="nombres" name="nombres" placeholder="Nombres" required>
+                                </div>
                                 
-                                <label>
-                                    Apellidos:
-                                    <input type="text" name="apellidos" placeholder="Apellidos" required>
-                                </label>
+                                <div class="form-field">
+                                    <label for="apellidos">Apellido:</label>
+                                    <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos" required>
+                                </div>
                                 
-                                <label>
-                                    RUC 20:
-                                    <input type="text" name="ruc" placeholder="RUC 20" pattern="20[0-9]{9}" title="Ingrese un RUC válido que comience con 20" required>
-                                </label>
+                                <div class="form-field">
+                                    <label for="ruc">RUC 20:</label>
+                                    <input type="text" id="ruc" name="ruc" placeholder="RUC 20" pattern="20[0-9]{9}" title="Ingrese un RUC válido que comience con 20" required>
+                                </div>
                                 
-                                <label>
-                                    Teléfono:
-                                    <input type="tel" name="telefono" placeholder="Teléfono / Celular" required>
-                                </label>
+                                <div class="form-field">
+                                    <label for="email">Email:</label>
+                                    <input type="email" id="email" name="email" placeholder="Tu correo" required>
+                                </div>
                                 
-                                <label>
-                                    Email:
-                                    <input type="email" name="email" placeholder="Email" required>
-                                </label>
+                                <div class="form-field">
+                                    <label for="telefono">Teléfono / Celular:</label>
+                                    <input type="tel" id="telefono" name="telefono" placeholder="Teléfono / Celular" required>
+                                </div>
                                 
-                                <label>
-                                    Servicios a contratar:
-                                    <select name="servicios" required>
-                                        <option value="">Seleccione un servicio</option>
+                                <div class="form-field">
+                                    <label for="servicios">Servicio:</label>
+                                    <select id="servicios" name="servicios" required>
+                                        <option value="">Servicios a Contratar</option>
                                         <option value="internet-dedicado">Internet Dedicado</option>
                                         <option value="internet-backup">Internet + Backup</option>
                                         <option value="solucion-completa">Solución Completa</option>
                                         <option value="consultoria">Consultoría</option>
                                     </select>
-                                </label>
+                                </div>
                                 
-                                <!-- Hidden fields for Formspree configuration -->
-                                <input type="hidden" name="_replyto" value="comercial@kado.pe">
-                                <input type="hidden" name="_subject" value="Nueva Consulta Corporativa - KADO Telecomunicaciones">
+                                <div class="form-field">
+                                    <label for="mensaje">Mensaje:</label>
+                                    <textarea id="mensaje" name="mensaje" placeholder="Mensaje" rows="3"></textarea>
+                                </div>
                                 
-                                <button type="submit" class="btn-corporate-submit">ENVIAR</button>
+                                <button type="submit" class="submit-btn">ENVIAR</button>
                             </form>
                             
-                            <!-- Mensaje de respuesta para formulario corporativo -->
-                            <p id="respuestaCorporativa"></p>
+                            <p id="respuesta" class="form-response"></p>
                         </div>
                     </div>
                 </div>
@@ -451,39 +449,40 @@
             <div class="testimonials-grid">
                 <div class="testimonial-card">
                     <div class="testimonial-content">
-                        <p>"Excelente servicio de internet. La velocidad es constante y el soporte técnico muy eficiente. Recomiendo KADO sin dudarlo."</p>
+                        <p>“Antes los profesores no podían preparar sus clases porque el internet se cortaba y todo se hacía más lento. Con KADO ahora tenemos una conexión estable y los docentes trabajan con tranquilidad.”</p>
                     </div>
                     <div class="testimonial-author">
-                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Cliente 1">
+                        <img src="images/foto_prospero_roca.jpg" alt="Cliente 1">
+
                         <div class="author-info">
-                            <h4>María González</h4>
-                            <span>Empresaria</span>
+                            <h4>Prospero Roca Falcon</h4>
+                            <span>Director Ugel Asuncion</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="testimonial-card">
                     <div class="testimonial-content">
-                        <p>"Desde que contratamos KADO, no hemos tenido problemas de conectividad. Perfecto para el trabajo remoto y entretenimiento familiar."</p>
+                        <p>"En la municipalidad siempre teníamos problemas con las reuniones virtuales porque la conexión se caía. Desde que tenemos KADO, podemos atender mejor a la gente y no perdemos tiempo."</p>
                     </div>
                     <div class="testimonial-author">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Cliente 2">
+                        <img src="images/foto_pool_xxx.jpg" alt="Cliente 2">
                         <div class="author-info">
-                            <h4>Carlos Mendoza</h4>
-                            <span>Ingeniero de Software</span>
+                            <h4>Pool XXX</h4>
+                            <span>Jefe de Logistica</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="testimonial-card">
                     <div class="testimonial-content">
-                        <p>"La atención al cliente es excepcional. Siempre están disponibles para resolver cualquier consulta. Muy profesionales."</p>
+                        <p>"Antes ver una película era imposible porque se quedaba cargando a cada rato. Con KADO podemos ver series y partidos en streaming sin cortes.”</p>
                     </div>
                     <div class="testimonial-author">
-                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Cliente 3">
+                        <img src="images/foto_uber_reyes.jpg" alt="Cliente 3">
                         <div class="author-info">
-                            <h4>Ana Rodríguez</h4>
-                            <span>Directora de Marketing</span>
+                            <h4>Uber Reyes</h4>
+                            <span>Usuario Residencial</span>
                         </div>
                     </div>
                 </div>

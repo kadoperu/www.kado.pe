@@ -158,63 +158,48 @@ function initializeContactForm() {
         });
     }
     
-    // Corporate form handling
-    const corporateForm = document.getElementById('corporate-form');
+    // Corporate form handling with modern approach
+    const corporateForm = document.getElementById('contacto');
     if (corporateForm) {
-        corporateForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+        corporateForm.addEventListener('submit', async function(e) {
+            e.preventDefault(); // evita que la página se recargue
             
-            // Get form data
-            const formData = new FormData(this);
-            const companyName = formData.get('company_name');
-            const companyLastname = formData.get('company_lastname');
-            const companyRuc = formData.get('company_ruc');
-            const companyPhone = formData.get('company_phone');
-            const companyEmail = formData.get('company_email');
-            const companyService = formData.get('company_service');
+            const form = e.target;
+            const data = new FormData(form);
+            const respuestaElement = document.getElementById('respuesta');
             
-            // Simple validation
-            if (!companyName || !companyLastname || !companyRuc || !companyPhone || !companyEmail || !companyService) {
-                alert('Por favor, complete todos los campos.');
-                return;
+            // Limpiar mensaje anterior
+            respuestaElement.textContent = '';
+            respuestaElement.className = 'form-response';
+            
+            // Mostrar mensaje de envío
+            respuestaElement.textContent = 'Enviando mensaje...';
+            respuestaElement.style.color = '#cccccc';
+            
+            try {
+                const respuesta = await fetch("https://formspree.io/f/xvgbnvon", {
+                    method: "POST",
+                    body: data,
+                    headers: {
+                        "Accept": "application/json"
+                    }
+                });
+                
+                if (respuesta.ok) {
+                    respuestaElement.textContent = "✅ ¡Mensaje enviado con éxito!";
+                    respuestaElement.style.color = '#4CAF50';
+                    respuestaElement.style.background = 'rgba(76, 175, 80, 0.1)';
+                    form.reset(); // limpia los campos
+                } else {
+                    respuestaElement.textContent = "⚠️ Hubo un problema, intenta de nuevo.";
+                    respuestaElement.style.color = '#ff6b35';
+                    respuestaElement.style.background = 'rgba(255, 107, 53, 0.1)';
+                }
+            } catch (error) {
+                respuestaElement.textContent = "❌ Error de conexión.";
+                respuestaElement.style.color = '#f44336';
+                respuestaElement.style.background = 'rgba(244, 67, 54, 0.1)';
             }
-            
-            // Validate RUC format
-            const rucPattern = /^20[0-9]{9}$/;
-            if (!rucPattern.test(companyRuc)) {
-                alert('Por favor, ingrese un RUC válido que comience con 20 y tenga 11 dígitos.');
-                return;
-            }
-            
-            // Create email body
-            const emailBody = `
-Solicitud de Cotización Corporativa - KADO Telecomunicaciones
-
-Datos de la Empresa:
-- Nombres: ${companyName}
-- Apellidos: ${companyLastname}
-- RUC: ${companyRuc}
-- Teléfono: ${companyPhone}
-- Email: ${companyEmail}
-- Servicio solicitado: ${companyService}
-
-Mensaje: Solicitud de cotización para Internet Dedicado Simétrico.
-
----
-Enviado desde el formulario web de KADO Telecomunicaciones
-            `.trim();
-            
-            // Create mailto link
-            const subject = encodeURIComponent('Solicitud de Cotización Corporativa - ' + companyName);
-            const body = encodeURIComponent(emailBody);
-            const mailtoLink = `mailto:comercial@kado.pe?subject=${subject}&body=${body}`;
-            
-            // Open email client
-            window.location.href = mailtoLink;
-            
-            // Show success message
-            alert('¡Gracias por tu interés! Se abrirá tu cliente de correo para enviar la solicitud a comercial@kado.pe');
-            this.reset();
         });
     }
 }
